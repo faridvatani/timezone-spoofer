@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timezone Spoofer</title>
+    <link rel="stylesheet" href="popup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo-area">
+          <svg
+            class="logo"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M12 6V12L16 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <h1>TZ Spoofer</h1>
+          <div id="status-indicator">
+            <span class="status-dot"></span>
+            <span id="status-text">Disabled</span>
+          </div>
+        </div>
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="toggle"
+            title="active / disable extension"
+          />
+          <span class="slider"></span>
+        </label>
+      </header>
+
+      <div class="main-content">
+        <div id="refresh-banner" class="hidden">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M1 4v6h6" />
+            <path d="M23 20v-6h-6" />
+            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10" />
+            <path d="M3.51 15a9 9 0 0 0 14.85 3.36L23 14" />
+          </svg>
+          <span>Refresh pages to apply changes</span>
+        </div>
+
+        <div id="notification" class="notification hidden">
+          <span id="notification-text"></span>
+        </div>
+
+        <div class="preview-card" id="preview-card">
+          <div class="preview-info">
+            <span class="preview-label">Current Spoof</span>
+            <h2 id="selected-name">UTC</h2>
+            <div class="meta-row">
+              <span id="selected-offset">UTC +00:00</span>
+              <span class="meta-separator">|</span>
+              <span id="calling-code">+0</span>
+              <span class="meta-separator">|</span>
+              <span id="local-currency">USD</span>
+            </div>
+            <div class="ip-row">
+              <span class="ip-label">IP:</span>
+              <span id="current-ip">Loading...</span>
+            </div>
+          </div>
+          <div class="preview-clock">
+            <div id="preview-time">00:00:00</div>
+            <div id="preview-date">Jan 1, 2026</div>
+          </div>
+        </div>
+
+        <div class="search-wrapper">
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="7"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M20 20L16 16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            id="search"
+            placeholder="Search city or region..."
+            autocomplete="off"
+          />
+          <button id="ip-sync-btn" aria-label="Sync timezone with IP location">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span class="tooltip">Sync with your IP location</span>
+          </button>
+        </div>
+
+        <div class="list-container">
+          <ul id="list">
+            <!-- Timezones will be injected here -->
+          </ul>
+        </div>
+
+        <footer>
+          <div class="creator">
+            Created by
+            <a
+              href="https://github.com/faridvatani"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span class="creator-name">Farid Vatani</span></a
+            >
+          </div>
+          <div class="version" id="version-tag">v1.0.0</div>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
